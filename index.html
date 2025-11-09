@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Interactive CV - Manan Sood</title>
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js library for the Radar Chart -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* Import Inter font (Professional and clean) */
@@ -23,22 +25,14 @@
         .border-maroon { border-color: #800000; }
         .text-charcoal { color: #222222; }
 
-        /* --- PARALLAX CORE STYLING (FIXED for all devices) --- */
+        /* --- PARALLAX CORE STYLING --- */
         .parallax-bg {
-            /* KEY FIX: background-attachment: fixed; ensures the scrolling parallax effect. */
-            background-attachment: fixed; 
+            background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             min-height: 400px;
             position: relative;
-        }
-
-        /* Responsive Adjustment for smaller screens */
-        @media (max-width: 767px) {
-            .parallax-bg {
-                min-height: 250px; 
-            }
         }
 
         /* Hero Image - Conceptual: Dark Maroon/Charcoal Theme */
@@ -60,7 +54,6 @@
             background-color: rgba(34, 34, 34, 0.9); /* Dark Charcoal overlay for strong contrast */
             width: 100%;
             height: 100%;
-            min-height: 100%; 
             padding: 4rem 1rem;
             display: flex;
             align-items: center;
@@ -71,7 +64,6 @@
         .tab-link {
             transition: all 0.3s ease;
             border-bottom: 3px solid transparent;
-            flex-shrink: 0; /* Prevents tabs from shrinking too much */
         }
         .tab-link.active {
             border-bottom-color: #800000; /* Maroon Accent */
@@ -96,7 +88,7 @@
             position: relative;
             width: 100%;
             max-width: 500px;
-            height: 300px; /* Adjusted height for better mobile presentation */
+            height: 320px;
             margin: 0 auto;
         }
         @media (min-width: 768px) {
@@ -108,93 +100,80 @@
 </head>
 <body>
 
+    <!-- Sticky Navigation (Charcoal & White) -->
     <header class="bg-white/95 backdrop-blur-sm shadow-md sticky top-0 z-50">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
-            <span class="text-xl sm:text-2xl font-extrabold maroon tracking-wider">MANAN SOOD | PM</span>
-            
-            <button id="mobile-menu-button" class="md:hidden text-charcoal p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-maroon" aria-label="Toggle navigation menu">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-
+            <span class="text-2xl font-extrabold maroon tracking-wider">MANAN SOOD | PM</span>
             <div class="space-x-4 hidden md:flex">
                 <a href="#profile-summary" class="text-charcoal hover:text-maroon transition duration-150">Summary</a>
                 <a href="#career-timeline" class="text-charcoal hover:text-maroon transition duration-150">Experience</a>
                 <a href="#skill-dashboard" class="text-charcoal hover:text-maroon transition duration-150">Skills</a>
                 <a href="#certs-section" class="text-charcoal hover:text-maroon transition duration-150">Education</a>
             </div>
-            
-            <a href="https://www.linkedin.com/in/manansood027/" target="_blank" class="bg-maroon text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-800 transition duration-200 shadow-lg hidden md:block">LinkedIn</a>
-            <a href="https://www.linkedin.com/in/manansood027/" target="_blank" class="bg-maroon text-white px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-red-800 transition duration-200 shadow-lg md:hidden">Connect</a>
-
+            <a href="https://www.linkedin.com/in/manansood027/" target="_blank" class="bg-maroon text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-800 transition duration-200 shadow-lg">LinkedIn</a>
         </nav>
-        
-        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#profile-summary" class="block px-3 py-2 rounded-md text-base font-medium text-charcoal hover:bg-gray-50 hover:text-maroon">Summary</a>
-                <a href="#career-timeline" class="block px-3 py-2 rounded-md text-base font-medium text-charcoal hover:bg-gray-50 hover:text-maroon">Experience</a>
-                <a href="#skill-dashboard" class="block px-3 py-2 rounded-md text-base font-medium text-charcoal hover:bg-gray-50 hover:text-maroon">Skills</a>
-                <a href="#certs-section" class="block px-3 py-2 rounded-md text-base font-medium text-charcoal hover:bg-gray-50 hover:text-maroon">Education</a>
-            </div>
-        </div>
     </header>
 
     <main>
+        <!-- 1. HERO PARALLAX SECTION -->
         <section id="hero-parallax" class="parallax-bg">
             <div class="parallax-content">
-                <div class="max-w-2xl text-center text-white p-4 sm:p-8 rounded-xl">
-                    <h1 class="text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tight mb-2 sm:mb-4">Manan Sood</h1>
-                    <p class="text-xl sm:text-2xl md:text-3xl font-light text-gray-300">
+                <div class="max-w-4xl text-center text-white p-8 rounded-xl">
+                    <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight mb-4">Manan Sood</h1>
+                    <p class="text-2xl md:text-3xl font-light text-gray-300">
                         Certified SAFe® 6.0 Product Owner/Product Manager & PMP
                     </p>
                 </div>
             </div>
         </section>
 
+        <!-- 2. PROFILE SUMMARY & KEY METRICS -->
         <section id="profile-summary" class="bg-white py-16 md:py-24 shadow-inner relative z-10">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl sm:text-4xl font-bold maroon mb-8 text-center">Professional Summary & Impact</h2>
+                <h2 class="text-4xl font-bold maroon mb-8 text-center">Professional Summary & Impact</h2>
                 
-                <div class="text-base sm:text-lg text-charcoal leading-relaxed mb-12 max-w-4xl mx-auto border-l-4 border-maroon pl-6 py-4 bg-gray-50 rounded-lg shadow-sm">
+                <div class="text-lg text-charcoal leading-relaxed mb-12 max-w-4xl mx-auto border-l-4 border-maroon pl-6 py-4 bg-gray-50 rounded-lg shadow-sm">
                     With <strong>8+ years</strong> of progressive experience, I drive end-to-end product strategy, execution, and value delivery within the high-stakes <strong>Fintech/Digital Payments</strong> domain. I am adept at defining Product Roadmaps, translating technical complexity into clear business requirements, and achieving measurable results in operational efficiency and customer conversion.
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-center">
-                    <div class="bg-gray-50 rounded-xl p-6 sm:p-8 shadow-md transition duration-300 hover:shadow-lg hover:bg-gray-100">
-                        <span class="text-4xl sm:text-5xl font-extrabold maroon block">100+</span>
-                        <p class="text-charcoal mt-2 text-lg sm:text-xl">Features Delivered</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-md transition duration-300 hover:shadow-lg hover:bg-gray-100">
+                        <span class="text-5xl font-extrabold maroon block">100+</span>
+                        <p class="text-charcoal mt-2 text-xl">Features Delivered</p>
                     </div>
-                    <div class="bg-gray-50 rounded-xl p-6 sm:p-8 shadow-md transition duration-300 hover:shadow-lg hover:bg-gray-100">
-                        <span class="text-4xl sm:text-5xl font-extrabold maroon block">20%</span>
-                        <p class="text-charcoal mt-2 text-lg sm:text-xl">Boost in Productivity</p>
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-md transition duration-300 hover:shadow-lg hover:bg-gray-100">
+                        <span class="text-5xl font-extrabold maroon block">20%</span>
+                        <p class="text-charcoal mt-2 text-xl">Boost in Productivity</p>
                     </div>
-                    <div class="bg-gray-50 rounded-xl p-6 sm:p-8 shadow-md transition duration-300 hover:shadow-lg hover:bg-gray-100">
-                        <span class="text-4xl sm:text-5xl font-extrabold maroon block">90%</span>
-                        <p class="text-charcoal mt-2 text-lg sm:text-xl">PI Planning Alignment</p>
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-md transition duration-300 hover:shadow-lg hover:bg-gray-100">
+                        <span class="text-5xl font-extrabold maroon block">90%</span>
+                        <p class="text-charcoal mt-2 text-xl">PI Planning Alignment</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- 3. CAREER TIMELINE SECTION -->
         <section id="career-timeline" class="bg-[#FAFAFA] py-16 md:py-24 relative z-10">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl sm:text-4xl font-bold maroon mb-8 sm:mb-12 text-center">Career Timeline: Experience Deep Dive</h2>
+                <h2 class="text-4xl font-bold maroon mb-12 text-center">Career Timeline: Experience Deep Dive</h2>
                 
-                <div class="bg-white rounded-xl shadow-2xl p-4 md:p-10 border-t-4 border-maroon">
+                <div class="bg-white rounded-xl shadow-2xl p-6 md:p-10 border-t-4 border-maroon">
                     <div class="border-b border-gray-200 mb-6">
-                        <nav class="-mb-px flex space-x-4 md:space-x-8 overflow-x-auto whitespace-nowrap" aria-label="Tabs">
-                            <button data-role="amex" class="tab-link active py-3 px-1 text-sm sm:text-base text-charcoal text-center">American Express</button>
-                            <button data-role="infosys" class="tab-link py-3 px-1 text-sm sm:text-base text-charcoal text-center">Infosys</button>
-                            <button data-role="capgemini" class="tab-link py-3 px-1 text-sm sm:text-base text-charcoal text-center">Capgemini</button>
+                        <nav class="-mb-px flex space-x-4 md:space-x-8 overflow-x-auto" aria-label="Tabs">
+                            <!-- Note: Added w-full for better mobile tap target -->
+                            <button data-role="amex" class="tab-link active whitespace-nowrap py-3 px-1 text-base text-charcoal w-auto sm:w-1/3 text-left sm:text-center">American Express</button>
+                            <button data-role="infosys" class="tab-link whitespace-nowrap py-3 px-1 text-base text-charcoal w-auto sm:w-1/3 text-left sm:text-center">Infosys</button>
+                            <button data-role="capgemini" class="tab-link whitespace-nowrap py-3 px-1 text-base text-charcoal w-auto sm:w-1/3 text-left sm:text-center">Capgemini</button>
                         </nav>
                     </div>
 
                     <div id="role-content">
+                        <!-- Amex Role -->
                         <div id="amex-role" class="role-details active">
-                            <h3 class="text-xl sm:text-2xl font-extrabold maroon">Assistant Product Manager</h3>
-                            <p class="text-sm sm:text-md text-gray-500 mb-4">American Express | Nov 2022 – Present</p>
-                            <ul class="list-disc list-outside space-y-3 pl-5 text-charcoal text-base">
+                            <h3 class="text-2xl font-extrabold maroon">Assistant Product Manager</h3>
+                            <p class="text-md text-gray-500 mb-4">American Express | Nov 2022 – Present</p>
+                            <ul class="list-disc list-outside space-y-3 pl-5 text-charcoal">
                                 <li><strong>Drove the end-to-end Product Strategy and Vision</strong> as <strong>Product Owner</strong> for high-priority platforms (OneCMS, CardShop, Online Enrollment), impacting millions of customers.</li>
                                 <li><strong>Led the complete feature lifecycle</strong>, successfully delivering <strong>100+ new features</strong> by prioritizing the backlog, defining user stories, and implementing continuous improvement cycles.</li>
                                 <li><strong>Optimized operational efficiency and team flow</strong>, which <strong>boosted team productivity by 20%</strong> and reduced backlog resolution time by <strong>10%</strong>.</li>
@@ -202,10 +181,11 @@
                                 <li>Managed complexity and ensured project alignment by leading coordination across <strong>10+ cross-regional and cross-functional stakeholders</strong>.</li>
                             </ul>
                         </div>
+                        <!-- Infosys Role -->
                         <div id="infosys-role" class="role-details">
-                            <h3 class="text-xl sm:text-2xl font-extrabold maroon">Senior Associate Consultant (Product Owner)</h3>
-                            <p class="text-sm sm:text-md text-gray-500 mb-4">Infosys | Jul 2020 – Oct 2022</p>
-                            <ul class="list-disc list-outside space-y-3 pl-5 text-charcoal text-base">
+                            <h3 class="text-2xl font-extrabold maroon">Senior Associate Consultant (Product Owner)</h3>
+                            <p class="text-md text-gray-500 mb-4">Infosys | Jul 2020 – Oct 2022</p>
+                            <ul class="list-disc list-outside space-y-3 pl-5 text-charcoal">
                                 <li>Functioned as <strong>Product Owner</strong> for complex, large-scale data migration projects within the <strong>Global Payments</strong> domain.</li>
                                 <li><strong>Ensured 100% Regulatory Compliance</strong> and <strong>Data Governance</strong> by providing expert support and validation for <strong>20+ critical AML</strong> and non-regulatory financial reports across the EMEA region.</li>
                                 <li><strong>Orchestrated and led quarterly SAFe PI Planning</strong> sessions involving over <strong>15 distributed teams</strong>, achieving a <strong>90% alignment</strong> in objectives.</li>
@@ -213,10 +193,11 @@
                                 <li>Applied advanced <strong>SQL querying</strong> to rigorously analyze data integrity and ensure accurate implementation of business requirements.</li>
                             </ul>
                         </div>
+                        <!-- Capgemini Role -->
                         <div id="capgemini-role" class="role-details">
-                            <h3 class="text-xl sm:text-2xl font-extrabold maroon">Senior Associate Consultant (Full Stack Developer)</h3>
-                            <p class="text-sm sm:text-md text-gray-500 mb-4">Capgemini | Jul 2015 – Oct 2018</p>
-                            <ul class="list-disc list-outside space-y-3 pl-5 text-charcoal text-base">
+                            <h3 class="text-2xl font-extrabold maroon">Senior Associate Consultant (Full Stack Developer)</h3>
+                            <p class="text-md text-gray-500 mb-4">Capgemini | Jul 2015 – Oct 2018</p>
+                            <ul class="list-disc list-outside space-y-3 pl-5 text-charcoal">
                                 <li>Worked as a Full Stack Developer, establishing a strong foundational understanding of technical architecture essential for effective API-centric Product Management.</li>
                                 <li>Contributed to the development of the official Rio Olympics 2016 website (NBCU) using modern web technologies.</li>
                                 <li>Bridged the communication gap between technical teams and business partners, facilitating smoother requirements interpretation and project execution.</li>
@@ -227,68 +208,74 @@
             </div>
         </section>
 
+        <!-- 4. SKILLS PARALLAX SECTION -->
         <section id="skills-parallax" class="parallax-bg">
             <div class="parallax-content">
-                <div class="max-w-4xl mx-auto text-center text-white p-4 sm:p-0">
-                    <h2 class="text-4xl sm:text-5xl font-bold tracking-tight mb-4">Skill Dashboard</h2>
-                    <p class="text-lg sm:text-xl font-light text-gray-300">
+                <div class="max-w-6xl mx-auto text-center text-white">
+                    <h2 class="text-5xl font-bold tracking-tight mb-4">Skill Dashboard</h2>
+                    <p class="text-xl font-light text-gray-300">
                         Visualize proficiency across Product Strategy, Agile, Data, and Technical Domains.
                     </p>
                 </div>
             </div>
         </section>
         
+        <!-- 5. SKILL DASHBOARD CONTENT -->
         <section id="skill-dashboard" class="bg-white py-16 md:py-24 relative z-10">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
-                    <button data-skill-category="product" class="skill-button active rounded-full bg-white px-4 py-2 text-xs sm:text-sm font-semibold text-charcoal shadow-md hover:bg-gray-100">Product Strategy</button>
-                    <button data-skill-category="agile" class="skill-button rounded-full bg-white px-4 py-2 text-xs sm:text-sm font-semibold text-charcoal shadow-md hover:bg-gray-100">Agile & Tools</button>
-                    <button data-skill-category="data" class="skill-button rounded-full bg-white px-4 py-2 text-xs sm:text-sm font-semibold text-charcoal shadow-md hover:bg-gray-100">Data & Analytics</button>
-                    <button data-skill-category="industry" class="skill-button rounded-full bg-white px-4 py-2 text-xs sm:text-sm font-semibold text-charcoal shadow-md hover:bg-gray-100">Industry & Technical</button>
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button data-skill-category="product" class="skill-button active rounded-full bg-white px-6 py-3 text-sm font-semibold text-charcoal shadow-md hover:bg-gray-100">Product Strategy</button>
+                    <button data-skill-category="agile" class="skill-button rounded-full bg-white px-6 py-3 text-sm font-semibold text-charcoal shadow-md hover:bg-gray-100">Agile & Tools</button>
+                    <button data-skill-category="data" class="skill-button rounded-full bg-white px-6 py-3 text-sm font-semibold text-charcoal shadow-md hover:bg-gray-100">Data & Analytics</button>
+                    <button data-skill-category="industry" class="skill-button rounded-full bg-white px-6 py-3 text-sm font-semibold text-charcoal shadow-md hover:bg-gray-100">Industry & Technical</button>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start bg-[#FAFAFA] p-6 sm:p-8 rounded-xl shadow-lg border border-gray-200">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-[#FAFAFA] p-8 rounded-xl shadow-lg border border-gray-200">
                     <div class="chart-container">
+                        <!-- Canvas element for the Interactive Radar Chart -->
                         <div id="chart-loading-message" class="text-center maroon font-semibold p-4">Loading interactive chart...</div>
                         <canvas id="skillChart" style="display:none;"></canvas>
                     </div>
-                    <div id="skill-list" class="text-charcoal text-base">
-                        </div>
+                    <!-- Detailed skill list, updated by JS -->
+                    <div id="skill-list" class="text-charcoal">
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- 6. EDUCATION PARALLAX SECTION -->
         <section id="education-parallax" class="parallax-bg">
             <div class="parallax-content">
-                <div class="max-w-4xl mx-auto text-center text-white p-4 sm:p-0">
-                    <h2 class="text-4xl sm:text-5xl font-bold tracking-tight mb-4">Foundation & Certifications</h2>
-                    <p class="text-lg sm:text-xl font-light text-gray-300">
+                <div class="max-w-6xl mx-auto text-center text-white">
+                    <h2 class="text-5xl font-bold tracking-tight mb-4">Foundation & Certifications</h2>
+                    <p class="text-xl font-light text-gray-300">
                         Formal education and professional commitment to growth.
                     </p>
                 </div>
             </div>
         </section>
 
+        <!-- 7. EDUCATION CONTENT -->
         <section id="certs-section" class="bg-[#FAFAFA] py-16 md:py-24 relative z-10">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                    <div class="bg-white rounded-xl shadow-xl p-6 sm:p-8 border-t-4 border-maroon">
-                        <h3 class="text-2xl sm:text-3xl font-bold text-charcoal mb-6">Education</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="bg-white rounded-xl shadow-xl p-8 border-t-4 border-maroon">
+                        <h3 class="text-3xl font-bold text-charcoal mb-6">Education</h3>
                         <div class="space-y-6">
                             <div>
-                                <h4 class="text-lg sm:text-xl font-extrabold maroon">MBA in Banking & Financial Services</h4>
-                                <p class="text-gray-600 text-sm sm:text-base">International Management Institute, New Delhi (2020)</p>
+                                <h4 class="text-xl font-extrabold maroon">MBA in Banking & Financial Services</h4>
+                                <p class="text-gray-600">International Management Institute, New Delhi (2020)</p>
                             </div>
                             <div>
-                                <h4 class="text-lg sm:text-xl font-extrabold maroon">B.Tech in Electronics & Communication</h4>
-                                <p class="text-gray-600 text-sm sm:text-base">BUEST, Baddi (2015)</p>
+                                <h4 class="text-xl font-extrabold maroon">B.Tech in Electronics & Communication</h4>
+                                <p class="text-gray-600">BUEST, Baddi (2015)</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-xl shadow-xl p-6 sm:p-8 border-t-4 border-maroon">
-                        <h3 class="text-2xl sm:text-3xl font-bold text-charcoal mb-6">Key Certifications</h3>
-                        <ul class="list-disc list-outside space-y-3 pl-5 text-charcoal text-base sm:text-lg">
+                    <div class="bg-white rounded-xl shadow-xl p-8 border-t-4 border-maroon">
+                        <h3 class="text-3xl font-bold text-charcoal mb-6">Key Certifications</h3>
+                        <ul class="list-disc list-outside space-y-3 pl-5 text-charcoal text-lg">
                             <li><strong>SAFE® 6.0 Product Owner/Product Manager</strong></li>
                             <li><strong>Project Management Professional (PMP)</strong> by PMI</li>
                             <li>The Fundamentals of Digital Marketing by Google</li>
@@ -301,10 +288,11 @@
 
     </main>
 
+    <!-- Footer (Charcoal Black) -->
     <footer class="text-center py-8 bg-[#222222] text-white">
-        <div class="max-w-6xl mx-auto px-4">
-             <p class="text-base sm:text-lg font-semibold mb-3">Connect with Manan Sood</p>
-             <div class="flex flex-col sm:flex-row justify-center gap-x-8 gap-y-1 text-gray-400 text-sm sm:text-base">
+        <div class="max-w-6xl mx-auto">
+             <p class="text-lg font-semibold mb-3">Connect with Manan Sood</p>
+             <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-gray-400">
                 <span>(91) 8894082157</span>
                 <span>manansood1234@gmail.com</span>
                 <a href="https://www.linkedin.com/in/manansood027/" target="_blank" class="text-gray-400 hover:text-white transition duration-150 underline">LinkedIn Profile</a>
@@ -313,24 +301,13 @@
     </footer>
 
     <script>
+        // Use a function that waits for the window to fully load, not just DOMContentLoaded
         window.onload = function() {
             
-            // --- Mobile Menu Toggle Logic ---
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // --- Navigation Logic (Hide menu after click on mobile) ---
+            // --- Navigation Logic ---
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    // Hide mobile menu on link click
-                    if (!mobileMenu.classList.contains('hidden')) {
-                         mobileMenu.classList.add('hidden');
-                    }
                     document.querySelector(this.getAttribute('href')).scrollIntoView({
                         behavior: 'smooth'
                     });
@@ -482,7 +459,7 @@
                     }
                     
                     // Update the detailed list of skills
-                    skillListContainer.innerHTML = `<ul class="list-disc list-outside space-y-3 pl-5 text-base">${data.list.map(item => `<li>${item}</li>`).join('')}</ul>`;
+                    skillListContainer.innerHTML = `<ul class="list-disc list-outside space-y-3 pl-5 text-lg">${data.list.map(item => `<li>${item}</li>`).join('')}</ul>`;
 
                 } catch (e) {
                     console.error("Error initializing or updating skill chart:", e);
@@ -490,7 +467,7 @@
                     chartCanvas.style.display = 'none';
                     loadingMessage.style.display = 'block';
                     loadingMessage.innerHTML = `<div class="p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">Error: Chart failed to load. Displaying static list.</div>`;
-                    skillListContainer.innerHTML = `<ul class="list-disc list-outside space-y-3 pl-5 text-base">${data.list.map(item => `<li>${item}</li>`).join('')}</ul>`;
+                    skillListContainer.innerHTML = `<ul class="list-disc list-outside space-y-3 pl-5 text-lg">${data.list.map(item => `<li>${item}</li>`).join('')}</ul>`;
                 }
             }
 
